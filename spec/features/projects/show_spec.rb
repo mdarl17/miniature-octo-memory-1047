@@ -1,7 +1,7 @@
 require "rails_helper"
 
-RSpec.describe "projects#show page" do 
-  it "displays a project's name, material, and challenge theme" do
+RSpec.describe "Project Show Page", type: :feature do 
+  it "should show project's name and material when visiting show page" do
     challenge = Challenge.create(theme: "Recycled Material", project_budget: 1000)
     project = challenge.projects.create(name: "News Chic", material: "Newspaper")
 
@@ -9,6 +9,14 @@ RSpec.describe "projects#show page" do
 
     expect(page).to have_content("Project: News Chic")
     expect(page).to have_content("Newspaper")
+  
+  end
+  it "should show the theme when visiting project show page" do
+    challenge = Challenge.create(theme: "Recycled Material", project_budget: 1000)
+    project = challenge.projects.create(name: "News Chic", material: "Newspaper")
+
+    visit "/projects/#{project.id}"
+
     expect(page).to have_content("Recycled Material")
   end
 
@@ -25,8 +33,6 @@ RSpec.describe "projects#show page" do
     visit "/projects/#{project.id}"
 
     expect(page).to have_content("Number of Contestants: 2")
-
-    save_and_open_page
   end
 
   it "displays the average age of each contestant working on the project" do
@@ -43,5 +49,7 @@ RSpec.describe "projects#show page" do
     visit "/projects/#{project.id}"
 
     expect(page).to have_content(38.0)
+
+    save_and_open_page
   end
 end

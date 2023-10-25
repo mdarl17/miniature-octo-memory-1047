@@ -90,7 +90,7 @@ I see a count of the number of contestants on this project
 
 (e.g.    Litfit
     Material: Lamp Shade
-  Challenge Theme: Apartment Furnishings
+  Challenge Theme: Apartment Furnishings lll
   Number of Contestants: 3 )
 ```
 
